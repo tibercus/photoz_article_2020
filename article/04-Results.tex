@@ -1,0 +1,119 @@
+\section{Results}\label{sec:exps}
+
+\subsection{Models based on various features}
+
+Описание экспериментов по построению моделей. Основная цель эксперимента - улучшение качества моделей за счет использования более глубоких данных. Базовая модель - SDSS. + описать сравнение моделей на, обученных на рентгеновской выборке vs обученных на оптической.
+
+\subsection{Models based on various trains}
+
+\subsection{Photometric errors}
+
+Здесь про разыгрывание ошибок. Сначала описание 22ой модели, что у неё не скоррелированы признаки, поэтому можно спокойно разыгрывать ошибки (м.б. посчитать корелляцию Пирсона для всех признаков?), потом сравнение до-после по точности.
+
+\subsection{ebv}
+
+Примерно так же, но про поглощение.
+
+\subsection{Best models detailed comparison}
+
+\achtung{Эта часть самая важная. Её нужно продумать.}
+
+\achtung{Сделать таблицы и графики, которые здесь хочется видеть. Тезисно изложить эту часть вместе с картинками}
+
+\achtung{Тут рассказать про отдельно далекие/близкие, яркие/слабые, для 15!, (17?), 19!, (21?!), 22, 35!}
+
+\subsubsection{Photo-z accuracy}
+
+В таблице \ref{tab:metrics-s82x-a17-all30sec} приведены метрики... Видно, что лучшая из предложенных моделей превосходит модели SOTA в 2 раза по метрикам.
+
+Сравнение на точечных и протяженных источниках.
+
+Точность photo-z по метрикам NMAD, catout (каким еще?) на выборке 200 тыс. квазаров моделей 15, 17, 19, 21, 22, 35. Сравнение с Ananna, Brescia на Stripe82X.
+
+
+Как лучше показывать метрики в бинах? Как в \ref{tab:metrics-by-rmag-s82x-a17} или графики, которые я построил недавно. 
+
+Где-нибудь привести примеры спектров и прогнозов из "красной подложки". Думаю, это будет очень интересно. Описание паттернов ошибок? Тогда нужно добавить скаттерплоты на выборке квазаров.
+
+Описать, что доля выбросов сильно растет на объектах с низким сигнал-шумом. При росте отношения сигнала к шуму точность растет.
+
+Стоит описывать, что модели ведут себя неустойчиво в зависимости от spec-z?
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{images/scatterplots-dr16qso.png}
+    \caption{Scatterplots of catastrophic outliers on DR16 QSOs}
+    \label{fig:my_label}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{images/metrics-dr16qso-zspec.png}
+    \caption{Метрики на квазарах DR16}
+    \label{fig:my_label}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{images/metrics-dr16qso-gmag.png}
+    \caption{Метрики на квазарах DR16}
+    \label{fig:metrics-dr16qso-gmag}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{images/metrics-dr16qso-rmag.png}
+    \caption{Метрики на квазарах DR16}
+    \label{fig:metrics-dr16qso-sng}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{images/metrics-dr16qso-zmag.png}
+    \caption{Метрики на квазарах DR16}
+    \label{fig:metrics-dr16qso-snw1}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{images/metrics-dr16qso-w1mag.png}
+    \caption{Метрики на квазарах DR16}
+    \label{fig:metrics-dr16qso-w1mag}
+\end{figure*}
+
+\include{article/04a-MetricsTables}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{images/scatterplots-s82x-a17-all30sec.png}
+    \caption{Scatterplots on Stripe82X-A17}
+    \label{fig:my_label}
+\end{figure*}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{images/zconfs2-dr16qso.png}
+    \caption{zConf cumulative distribution for DR16 qso test}
+    \label{fig:zconfs2-dr16qso}
+\end{figure}
+
+\subsubsection{Quality of confidence intervals}
+
+То же самое, но по метрикам Колмогорова-Смирнова, квантильный график для доверительных интервалов, сравнение с Ananna и Brescia (они приводят доверительные инттервалы?)
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{images/calibration-ci.png}
+    \caption{QQ-plot for confidence intervals on Stripe82X test.}
+    \label{fig:qqci}
+\end{figure*}
+
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{images/calibration-pit.png}
+    \caption{PIT-histogram and QQ-plot for full probabilistic predictions on Stripe82X test.}
+    \label{fig:qqpit}
+\end{figure*}
+
+Доверительные интервалы немного самоуверенные. Чем точнее модель, тем хуже калибровка.

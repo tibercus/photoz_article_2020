@@ -1,0 +1,31 @@
+\section{Metrics}
+
+To evaluate photo-z point estimates accuracy we use metrics common for this area [Salvato, Brescia, etc.]:
+\begin{itemize}
+
+    % \item root mean square error
+    % \begin{equation}\label{eq:rmse}
+    %     RMSE = \sqrt{\frac{1}{N} \sum_{i=1}^{N}\delta z_i ^2}
+    % \end{equation}
+    
+    \item normalized median absolute deviation
+    \begin{equation}\label{eq:nmad}
+        NMAD = 1.4826 \times median(|\delta z_i|)
+    \end{equation}{}
+    
+    \item fraction of catastrophic outliers
+    \begin{equation}\label{eq:catout_formula}
+        n_{>0.15} = \frac{N_{\delta z_i > 0.15}}{N}; N_{\delta z_i > 0.15} = \#\{i | \delta z_i > 0.15\},
+    \end{equation}{}
+    
+    % \item bias
+    % \begin{equation}
+    %     \mu = \frac{1}{N_{\delta z_i \leq 0.15}} \sum_{i|\delta z_i \leq 0.15} \delta z_i
+    % \end{equation}
+    
+    \item where \(\delta z_i\) defined as
+    \begin{equation}\label{eq:deltaznorm}
+    \delta z_i = \frac{\Delta z_i}{1+z_{spec,i}} = \frac{z_{ph,i} - z_{spec,i}}{1+z_{spec,i}}
+\end{equation}
+    
+\end{itemize}        

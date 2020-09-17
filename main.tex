@@ -1,0 +1,92 @@
+\documentclass[fleqn,usenatbib]{mnras}
+%
+%\hypersetup{draft}  %%% only for draft
+
+%\usepackage{natbib}
+\usepackage{xr-hyper}
+
+%from mnras:
+\usepackage{hyperref}	% Hyperlinks
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,filecolor=blue,urlcolor=blue}
+
+\usepackage[russian]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+\usepackage{graphicx}	% Including figure files
+\usepackage{amsmath}	% Advanced maths commands
+\usepackage{amssymb}	% Extra maths symbols
+\usepackage{multicol}   % Multi-column entries in tables
+\usepackage{bm}         % Bold maths symbols, including upright Greek
+\usepackage{pdflscape}  % Landscape pages
+\usepackage{enumitem}
+\usepackage{xspace}
+\usepackage{hhline}
+\def\beq#1{\begin{equation}\label{#1}}
+\def\eeq{\end{equation}}
+
+\usepackage{comment}
+
+\usepackage{color}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+\newcommand{\achtung}[1]{\textcolor{red}{//#1//}}
+
+
+\title[ShortTitle]{Title}
+\author[Borisov et al.]{Victor Borisov, Alexander Meshcheryakov %\newauthor 
+}
+\date{September 2020}
+
+%%%%%%%%%%%%%%%%%%%%
+%DO NOT CHANGE
+\makeatletter
+\newcommand*{\addFileDependency}[1]{% argument=file name and extension
+  \typeout{(#1)}
+  \@addtofilelist{#1}
+  \IfFileExists{#1}{}{\typeout{No file #1.}}
+}
+\makeatother
+
+\newcommand*{\myexternaldocument}[1]{%
+    \externaldocument{#1}%
+    \addFileDependency{#1.tex}%
+    \addFileDependency{#1.aux}%
+}
+%%%%%%%%%%%%%%%%%%%%
+%CHANGE
+%\myexternaldocument{pdf_figures}
+%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Проведено исследование, построение и сравнение моделей вероятностных прогнозов фотометрических красных смещений (photo-z) на основе алгоритма случайного леса  с использованием данных современных астрономических обзоров SDSS, PanStarrs и DESI Legacy Survey для построения трехмерной карты квазаров.
+
+Предложена модель photo-z, значительно превосходящая (в ~2 раза) по точности (метрики точечных прогнозов — нормализованное медианное абсолютное отклонение NMAD и доля выбросов n>0.15) лучшие модели (SOTA) известные в литературе. Для рентгеновских источников в тестовой области неба Stripe82X получена точность NMAD = 0.034 / 0.064 / 0.067 и n>0.15 = 0.079 / 0.170 / 0.163 для предложенной модели / шаблонной модели Ananna, 2017 / нейросетевой модели Brescia, 2019, соответственно.
+\end{abstract}
+
+\input{article/01-Introduction}
+\input{article/01a-RelatedWork}
+\input{article/02-Data}
+\input{article/03-TheAlgorithms}
+\input{article/03a-Metrics}
+\input{article/04-Results}
+\input{article/90-Conclusion}
+\input{article/91-Discussion}
+
+\section*{Acknowledgments}
+..
+
+% bibliograpgy 
+\bibliographystyle{mnras}
+\bibliography{main}
+
+\appendix
+
+\section{..}
+
+\end{document}
